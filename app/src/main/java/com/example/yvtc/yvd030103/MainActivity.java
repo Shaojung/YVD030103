@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    final int REQUEST_CODE_FOR_NAME = 321;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,13 +38,25 @@ public class MainActivity extends AppCompatActivity {
     public void click3(View v)
     {
         Intent it = new Intent(MainActivity.this, FourthActivity.class);
-        startActivityForResult(it, 321);
+        startActivityForResult(it, REQUEST_CODE_FOR_NAME);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        TextView tv5 = (TextView) findViewById(R.id.textView5);
-        tv5.setText(data.getStringExtra("ans"));
+        if (requestCode == REQUEST_CODE_FOR_NAME)
+        {
+            if (resultCode == RESULT_OK)
+            {
+                TextView tv5 = (TextView) findViewById(R.id.textView5);
+                tv5.setText(data.getStringExtra("ans"));
+            }
+        }
+
+        if (requestCode == 456)
+        {
+
+        }
+
     }
 }
