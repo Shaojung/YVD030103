@@ -26,7 +26,11 @@ public class MainActivity extends AppCompatActivity {
         EditText ed = (EditText) findViewById(R.id.editText);
         String str = ed.getText().toString();
         Intent it = new Intent(MainActivity.this, ThirdActivity.class);
-        it.putExtra("msg", str);
+
+        Bundle b = new Bundle();
+        b.putString("msg", str);
+
+        it.putExtras(b);
         startActivity(it);
     }
 }
